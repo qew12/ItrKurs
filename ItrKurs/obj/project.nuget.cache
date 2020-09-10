@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "gJb6235pLazHPADNRs9budnTylbvCDakUtYuBTwt4ADcmMIhgPDX0deSoqlpjYsotomfEO3yxkHBYpgG13EKAw==",
+  "success": true,
+  "projectFilePath": "F:\\ItrKurs\\ItrKurs\\ItrKurs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\qew\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm\\3.1.7\\microsoft.netcore.app.runtime.linux-arm.3.1.7.nupkg.sha512",
+    "C:\\Users\\qew\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm\\3.1.7\\microsoft.aspnetcore.app.runtime.linux-arm.3.1.7.nupkg.sha512",
+    "C:\\Users\\qew\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm\\3.1.7\\microsoft.netcore.app.host.linux-arm.3.1.7.nupkg.sha512"
+  ],
+  "logs": []
+}
