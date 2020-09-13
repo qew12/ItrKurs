@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItrKurs", "ItrKurs\ItrKurs.csproj", "{89C4D553-CCBD-409C-936F-ADF372FDF0AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItrKurs", "ItrKurs\ItrKurs.csproj", "{498A9C50-A0CA-4902-88DB-AA428D0A5718}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{89C4D553-CCBD-409C-936F-ADF372FDF0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89C4D553-CCBD-409C-936F-ADF372FDF0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89C4D553-CCBD-409C-936F-ADF372FDF0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89C4D553-CCBD-409C-936F-ADF372FDF0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498A9C50-A0CA-4902-88DB-AA428D0A5718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498A9C50-A0CA-4902-88DB-AA428D0A5718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498A9C50-A0CA-4902-88DB-AA428D0A5718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498A9C50-A0CA-4902-88DB-AA428D0A5718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CCAAED82-265B-4A05-80A3-96D62715B521}
+		SolutionGuid = {D1EE45BD-A10A-4869-92A6-566EDCCE9220}
 	EndGlobalSection
 EndGlobal
