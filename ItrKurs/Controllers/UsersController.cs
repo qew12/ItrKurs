@@ -8,7 +8,7 @@ using ItrKurs.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Task4.Controllers
+namespace ItrKurs.Controllers
 {
     public class UsersController : Controller
     {

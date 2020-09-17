@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ItrKurs.Models.Collection>
+@{
+    ViewBag.Title = "Все коллекции";
+}
+<a class="btn btn-success" asp-action="CreateCollection">Добавить коллекцию</a>
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Name</td><td>@item.Discription</td></tr>
+    }
+</table>

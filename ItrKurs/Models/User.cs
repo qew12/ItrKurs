@@ -13,5 +13,10 @@ namespace ItrKurs.Models
         public DateTimeOffset Lastlogin { get; set; }
         public string Status { get; set; }
         public bool IsSelected { get; set; }
+        public List<Collection> Collections { get; set; }
+
     }
+
+    
+
 }

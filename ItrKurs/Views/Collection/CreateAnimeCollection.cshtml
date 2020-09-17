@@ -1,0 +1,31 @@
+﻿@model ItrKurs.Models.Anime
+@{
+    ViewBag.Title = "Добавление anime коллекции";
+}
+<form asp-action="CreateCollection" asp-controller="Anime">
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Discription" class="control-label">Описание</label>
+        <input type="text" asp-for="Discription" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Genres" class="control-label">Genres</label>
+        <input type="text" asp-for="Genres" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Episodes" class="control-label">Episodes</label>
+        <input type="text" asp-for="Episodes" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Studios" class="control-label">Studios</label>
+        <input type="text" asp-for="Studios" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+
+</form>

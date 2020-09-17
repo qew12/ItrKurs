@@ -5,16 +5,18 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-<p>@User.Identity.Name</p>
+    <p>@User.Identity.Name</p>
 
-<form method="post" asp-controller="Account" asp-action="Logout">
-    <button type="submit" class="btn btn-danger">
-        Sign out</button>        
+    <form method="post" asp-controller="Account" asp-action="Logout">
+        <button type="submit" class="btn btn-danger">
+            Sign out
+        </button>
         <a class="btn btn-warning" asp-controller="Users" asp-action="Index">User Management</a>
-</form>
+    </form>
 }
 else
 {
     <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Sign In</a>
     <a class="btn btn-success" asp-controller="Account" asp-action="Register">Sign Up</a>
+    <a class="btn btn-success" asp-controller="Collection" asp-action="Index">Collection</a>
 }

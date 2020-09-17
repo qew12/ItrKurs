@@ -97,8 +97,8 @@ namespace ItrKurs.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -142,8 +142,8 @@ namespace ItrKurs.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -155,6 +155,45 @@ namespace ItrKurs.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Collections",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    bitMask = table.Column<byte>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    ImgSrc = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Discription = table.Column<string>(nullable: true),
+                    IdOwner = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTimeOffset>(nullable: false),
+                    Tags = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    Episodes = table.Column<int>(nullable: true),
+                    Studios = table.Column<string>(nullable: true),
+                    Genres = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: true),
+                    Book_Genres = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    Book_Author = table.Column<string>(nullable: true),
+                    Pages = table.Column<int>(nullable: true),
+                    Brand = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
+                    Engine = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Collections", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Collections_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -193,6 +232,11 @@ namespace ItrKurs.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Collections_UserId",
+                table: "Collections",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,6 +255,9 @@ namespace ItrKurs.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Collections");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

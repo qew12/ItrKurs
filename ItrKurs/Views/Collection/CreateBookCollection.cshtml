@@ -1,0 +1,101 @@
+﻿@model ItrKurs.Models.Book
+@{
+    ViewBag.Title = "Добавление book коллекции";
+}
+<table class="table table-hover home-content table-bordered ">
+    <thead class="thead-light">
+        <tr>
+
+            @foreach (var item in ViewBag.ids)
+            {
+                @if (ViewBag.boolArray[@item - 1] == true)
+                {
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" checked class="custom-control-input" id="@item" onclick="toggleCheckbox(this)">
+                            <label class="custom-control-label" for="@item">@ViewBag.strArray[@item - 1]</label>
+                        </div>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="@item" onclick="toggleCheckbox(this)">
+                            <label class="custom-control-label" for="@item">@ViewBag.strArray[@item - 1]</label>
+                        </div>
+                    </td>
+                }
+
+            }
+
+
+            <th><button class="btn btn-outline-success" id="buttonRefresh">Refresh</button></th>
+        </tr>
+    </thead>
+    
+    </table>
+<form asp-action="CreateCollection" asp-controller="Book">
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Discription" class="control-label">Описание</label>
+        <input type="text" asp-for="Discription" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImgSrc" class="control-label">ImgSrc</label>
+        <input type="image" asp-for="ImgSrc" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tags" class="control-label">Tags</label>
+        <input type="text" asp-for="Tags" class="form-control" />
+    </div>
+
+
+    @if (ViewBag.boolArray[0])
+    {
+        <div class="form-group">
+            <label asp-for="Date" class="control-label">Date</label>
+            <input type="datetime" asp-for="Date" class="form-control" />
+        </div>
+    }
+    @if (ViewBag.boolArray[1])
+    {
+        <div class="form-group">
+            <label asp-for="Genres" class="control-label">Genres</label>
+            <input type="text" asp-for="Genres" class="form-control" />
+        </div>
+    }
+    @if (ViewBag.boolArray[2])
+    {
+        <div class="form-group">
+            <label asp-for="Comment" class="control-label">Comment</label>
+            <input type="text" asp-for="Comment" class="form-control" />
+        </div>
+    }
+    @if (ViewBag.boolArray[3])
+    {
+        <div class="form-group">
+            <label asp-for="Author" class="control-label">Author</label>
+            <input type="text" asp-for="Author" class="form-control" />
+        </div>
+    }
+    @if (ViewBag.boolArray[4])
+    {
+        <div class="form-group">
+            <label asp-for="Pages" class="control-label">Pages</label>
+            <input type="number" asp-for="Pages" class="form-control" />
+        </div>
+    }
+
+
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+
+</form>

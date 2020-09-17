@@ -40,6 +40,44 @@ $('#buttonDelete').click(function () {
     });
 });
 
+function toggleCheckbox(element) {
+    $.ajax({
+        url: '/Book/Refresh',
+        type: 'POST',
+        data: { id: element.id },
+        success: function (result) {
+            if (result == 1) {
+                window.location = '/Book/CreateCollection';
+            }
+            else {
+                alert("Error delete");
+
+            }
+        }
+    });
+
+}
+
+$('#buttonRefresh').click(function () {
+    CheckedID();
+    $.ajax({
+        url: '/Book/Refresh',
+        type: 'POST',
+        data: { id: id },
+        success: function (result) {
+            if (result == 1) {
+                window.location = '/Book/CreateCollection';
+            }
+            else {
+                alert("Error delete");
+
+            }
+        }
+    });
+});
+
+
+
 $('#buttonBlock').click(function () {
     CheckedID();
     $.ajax({
