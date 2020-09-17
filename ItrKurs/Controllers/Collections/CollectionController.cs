@@ -15,7 +15,7 @@ namespace ItrKurs.Controllers
     {
         public static string[] _additionalFields;
         public ApplicationDbContext db;
-        public static bool[] _addFieldsBool = new bool[5] { false, false, false, false, false };
+        public bool[] _addFieldsBool = new bool[5] { false, false, false, false, false };
         public int[] ids;
         public CollectionController(ApplicationDbContext context)
         {
