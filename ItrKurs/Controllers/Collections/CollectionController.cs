@@ -8,6 +8,8 @@ using ItrKurs.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace ItrKurs.Controllers
 {
@@ -15,13 +17,34 @@ namespace ItrKurs.Controllers
     {
         public static string[] _additionalFields;
         public ApplicationDbContext db;
-        public bool[] _addFieldsBool = new bool[5] { false, false, false, false, false };
-        public int[] ids;
-        public CollectionController(ApplicationDbContext context)
+        private IHostingEnvironment hostingEnv;
+        public CollectionController(ApplicationDbContext context, IHostingEnvironment env)
         {
-            //_addFields = new bool[5] { false, false, false, false, false };
-            ids = new int[5] { 1, 2, 3, 4, 5 };
+            this.hostingEnv = env;
             db = context;
+        }
+
+        [HttpPost]
+        public IActionResult UploadFiles()
+        {
+            long size = 0;
+            var files = Request.Form.Files;
+            string name="";
+            foreach (var file in files)
+            {
+                string filename = hostingEnv.WebRootPath
+        + $@"\uploadedfiles\{file.FileName}";
+                name = filename;
+                size += file.Length;
+                using (FileStream fs =
+        System.IO.File.Create(filename))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+            }
+            string message = $"{files.Count} file(s) {name} bytes uploaded successfully!";
+            return Json(message);
         }
 
         public virtual async Task<IActionResult> Index()

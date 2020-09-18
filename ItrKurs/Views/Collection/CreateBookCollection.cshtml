@@ -5,32 +5,15 @@
 <table class="table table-hover home-content table-bordered ">
     <thead class="thead-light">
         <tr>
-
-            @foreach (var item in ViewBag.ids)
+            @for (int i = 0; i < @ViewBag.strArray.Length; ++i)
             {
-                @if (ViewBag.boolArray[@item - 1] == true)
-                {
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" checked class="custom-control-input" id="@item" onclick="toggleCheckbox(this)">
-                            <label class="custom-control-label" for="@item">@ViewBag.strArray[@item - 1]</label>
-                        </div>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="@item" onclick="toggleCheckbox(this)">
-                            <label class="custom-control-label" for="@item">@ViewBag.strArray[@item - 1]</label>
-                        </div>
-                    </td>
-                }
-
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="@i" onclick="toggle(this,'@i'+'a')">
+                        <label class="custom-control-label" for="@i">@ViewBag.strArray[@i]</label>
+                    </div>
+                </td>
             }
-
-
-            <th><button class="btn btn-outline-success" id="buttonRefresh">Refresh</button></th>
         </tr>
     </thead>
     
@@ -46,10 +29,9 @@
         <input type="text" asp-for="Discription" class="form-control" />
     </div>
 
-    <div class="form-group">
-        <label asp-for="ImgSrc" class="control-label">ImgSrc</label>
-        <input type="image" asp-for="ImgSrc" class="form-control" />
-    </div>
+
+    
+
 
     <div class="form-group">
         <label asp-for="Tags" class="control-label">Tags</label>
@@ -57,45 +39,44 @@
     </div>
 
 
-    @if (ViewBag.boolArray[0])
-    {
-        <div class="form-group">
-            <label asp-for="Date" class="control-label">Date</label>
-            <input type="datetime" asp-for="Date" class="form-control" />
-        </div>
-    }
-    @if (ViewBag.boolArray[1])
-    {
-        <div class="form-group">
-            <label asp-for="Genres" class="control-label">Genres</label>
-            <input type="text" asp-for="Genres" class="form-control" />
-        </div>
-    }
-    @if (ViewBag.boolArray[2])
-    {
-        <div class="form-group">
-            <label asp-for="Comment" class="control-label">Comment</label>
-            <input type="text" asp-for="Comment" class="form-control" />
-        </div>
-    }
-    @if (ViewBag.boolArray[3])
-    {
-        <div class="form-group">
-            <label asp-for="Author" class="control-label">Author</label>
-            <input type="text" asp-for="Author" class="form-control" />
-        </div>
-    }
-    @if (ViewBag.boolArray[4])
-    {
-        <div class="form-group">
-            <label asp-for="Pages" class="control-label">Pages</label>
-            <input type="number" asp-for="Pages" class="form-control" />
-        </div>
-    }
+    <div class="form-group" style="display:none" id="0a">
+        <label asp-for="Date" class="control-label">Date</label>
+        <input type="date" asp-for="Date" class="form-control" />
+    </div>
+
+
+    <div class="form-group" style="display:none" id="1a">
+        <label asp-for="Genres" class="control-label">Genres</label>
+        <input type="text" asp-for="Genres" class="form-control" />
+    </div>
+
+    <div class="form-group" style="display:none" id="2a">
+        <label asp-for="Comment" class="control-label">Comment</label>
+        <input type="text" asp-for="Comment" class="form-control" />
+    </div>
+
+    <div class="form-group" style="display:none" id="3a">
+        <label asp-for="Author" class="control-label">Author</label>
+        <input type="text" asp-for="Author" class="form-control" />
+    </div>
+
+    <div class="form-group" style="display:none" id="4a">
+        <label asp-for="Pages" class="control-label">Pages</label>
+        <input type="number" asp-for="Pages" class="form-control" />
+    </div>
+
 
 
     <div class="form-group">
         <input type="submit" value="Отправить" class="btn btn-default" />
     </div>
 
+</form>
+
+<form method="post" enctype="multipart/form-data">
+    <div id="fileBasket" class="filebasket">
+        Drag-n-Drop files here.
+    </div>
+    <br />
+    <img id="progress" src="~/Images/Progress.gif" />
 </form>

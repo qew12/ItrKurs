@@ -8,15 +8,16 @@ using ItrKurs.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ItrKurs.Controllers.Collections
 {
     public class AnimeController : CollectionController
     {
 
-        public AnimeController(ApplicationDbContext context) : base(context)
-    {
-    }
+        public AnimeController(ApplicationDbContext context, IHostingEnvironment env) : base(context, env)
+        {
+        }
         public override IActionResult CreateCollection()
         {
             return View("~/Views/Collection/CreateAnimeCollection.cshtml");
