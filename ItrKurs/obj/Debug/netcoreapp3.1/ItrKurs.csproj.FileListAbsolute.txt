@@ -82,3 +82,5 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\CreateCollecti
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\CreateBookCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\CreateAnimeCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\ItrKurs.csprojAssemblyReference.cache
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\hui.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\AddBookToCollection.cshtml.g.cs

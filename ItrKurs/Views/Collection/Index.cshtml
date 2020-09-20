@@ -3,6 +3,24 @@
     ViewBag.Title = "Все коллекции";
 }
 <a class="btn btn-success" asp-action="CreateCollection">Добавить коллекцию</a>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Add
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" asp-controller="Book" asp-action="CreateCollection">Add book collection</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-controller="Anime" asp-action="CreateCollection">Add anime collection</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-controller="Car" asp-action="CreateCollection">Add car colection</a>
+
+    </div>
+</div>
+
+<a class="btn btn-primary" asp-controller="Book" asp-action="hui">hui</a>
+<a class="btn btn-primary" asp-controller="Book" asp-action="hui2">hui2</a>
+
 <table class="table">
     <tr><td>Имя</td><td>Возраст</td></tr>
     @foreach (var item in Model)

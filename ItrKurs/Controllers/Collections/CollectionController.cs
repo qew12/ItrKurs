@@ -11,17 +11,26 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
+
+
 namespace ItrKurs.Controllers
 {
     public class CollectionController : Controller
     {
         public static string[] _additionalFields;
         public ApplicationDbContext db;
+        [Obsolete]
         private IHostingEnvironment hostingEnv;
-        public CollectionController(ApplicationDbContext context, IHostingEnvironment env)
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        public User _currentUser;
+
+        public CollectionController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor)
         {
-            this.hostingEnv = env;
+            this.hostingEnv = env ?? throw new ArgumentNullException(nameof(env));
             db = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost]
@@ -34,37 +43,37 @@ namespace ItrKurs.Controllers
             {
                 string filename = hostingEnv.WebRootPath
         + $@"\uploadedfiles\{file.FileName}";
-                name = filename;
+                name = file.FileName;
                 size += file.Length;
-                using (FileStream fs =
-        System.IO.File.Create(filename))
+                using (FileStream fs = System.IO.File.Create(filename))
                 {
                     file.CopyTo(fs);
                     fs.Flush();
                 }
             }
-            string message = $"{files.Count} file(s) {name} bytes uploaded successfully!";
-            return Json(message);
+            
+            string message = $"{name}  uploaded successfully!";
+            name = $@"\uploadedfiles\{name}";
+            return Json(name);
         }
 
         public virtual async Task<IActionResult> Index()
         {
+            //db.Collections.FindAsync()
             return View(await db.Collections.ToListAsync());
         }
         public virtual IActionResult CreateCollection()
         {
             return View();
         }
-       /* [HttpPost]
-        public virtual async Task<IActionResult> CreateCollection(Collection collection)
+
+        
+        public async Task<User> GetCurrentUser()
         {
-            db.Collections.Add(collection);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }*/
+            return await _userManager.GetUserAsync(HttpContext.User);
+        }
 
 
-       
 
 
     }

@@ -379,3 +379,5 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Crea
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\CreateBookCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\CreateCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Index.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\AddBookToCollection.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\hui.cshtml.g.cs

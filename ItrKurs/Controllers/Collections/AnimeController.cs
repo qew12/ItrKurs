@@ -15,7 +15,7 @@ namespace ItrKurs.Controllers.Collections
     public class AnimeController : CollectionController
     {
 
-        public AnimeController(ApplicationDbContext context, IHostingEnvironment env) : base(context, env)
+        public AnimeController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context, env, userManager, signInManager, httpContextAccessor)
         {
         }
         public override IActionResult CreateCollection()

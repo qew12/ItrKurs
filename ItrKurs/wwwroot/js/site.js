@@ -12,6 +12,7 @@ $('input:checkbox').click(function () {
 });
 
 var id = [];
+var bitmask;
 function CheckedID()
 {
     var object = $('td input[type ="checkbox"]:checked');
@@ -40,11 +41,34 @@ $('#buttonDelete').click(function () {
     });
 });
 
+
+function ShowField(bitM) {
+    boolMask(bitM)
+    document.getElementById("Bitmask").value = bitM;
+}
+
+function boolMask(bitM) {
+    
+    for (var i = 0; i < 5; i++) {
+        var tmp = 1 << i;
+        if((bitM & tmp) == tmp)
+        document.getElementById(i).style.display = 'block';
+    }
+}
+
 function toggle(element,id) {
     if (element.checked) {
+        bitmask |= (1 << element.id);
         document.getElementById(id).style.display = 'block';
     }
-    else document.getElementById(id).style.display = 'none';
+
+    else
+    {
+        document.getElementById(id).style.display = 'none';
+        bitmask &= ~(1 << element.id);
+    }
+    alert(bitmask);
+    document.getElementById("Bitmask").value = bitmask;
 }
 
 $(document).ready(function () {
@@ -69,6 +93,11 @@ $(document).ready(function () {
 
 
 function toggleCheckbox(element) {
+    if (element.checked)
+        bitmask |= (1 << element.id);
+    else
+        bitmask &= ~(1 << element.id);
+    alert(bitmask);
     $.ajax({
         url: '/Book/Refresh',
         type: 'POST',
@@ -168,7 +197,8 @@ $("#fileBasket").on("drop", function (evt) {
         processData: false,
         data: data,
         success: function (message) {
-            $("#fileBasket").html(message);
+            document.getElementById("ImgSrc").value = message;
+            $("#fileBasket").html("Upload successful");
         },
         error: function () {
             $("#fileBasket").html
