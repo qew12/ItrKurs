@@ -10,6 +10,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Collections.Generic;
 
 
 
@@ -67,7 +68,22 @@ namespace ItrKurs.Controllers
             return View();
         }
 
-        
+        public async Task<IActionResult> Main()
+        {
+            _currentUser = await GetCurrentUser();
+            ViewBag.Collections = _currentUser.Collections;
+            
+
+            var collections = db.Collections.Where(p => p.UserId == _currentUser.Id).ToList();
+            if (collections != null && collections.Count > 0)
+            {
+                ViewBag.Collections = collections;
+                return View();
+            }
+            else return View(await db.Collections.ToListAsync());
+        }
+
+
         public async Task<User> GetCurrentUser()
         {
             return await _userManager.GetUserAsync(HttpContext.User);

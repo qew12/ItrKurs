@@ -168,22 +168,21 @@ namespace ItrKurs.Migrations
                     ImgSrc = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     Discription = table.Column<string>(nullable: true),
-                    IdOwner = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     Date = table.Column<DateTimeOffset>(nullable: false),
                     Tags = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    Episodes = table.Column<int>(nullable: true),
-                    Studios = table.Column<string>(nullable: true),
                     Genres = table.Column<string>(nullable: true),
+                    Studio = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
+                    Episodes = table.Column<int>(nullable: true),
                     Book_Genres = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
                     Book_Author = table.Column<string>(nullable: true),
                     Pages = table.Column<int>(nullable: true),
                     Brand = table.Column<string>(nullable: true),
-                    Year = table.Column<int>(nullable: true),
                     Country = table.Column<string>(nullable: true),
-                    Engine = table.Column<string>(nullable: true)
+                    Engine = table.Column<string>(nullable: true),
+                    Mileage = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

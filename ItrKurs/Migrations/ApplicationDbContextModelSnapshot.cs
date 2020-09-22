@@ -33,9 +33,6 @@ namespace ItrKurs.Migrations
                     b.Property<string>("Discription")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("IdOwner")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("ImgSrc")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -279,7 +276,7 @@ namespace ItrKurs.Migrations
                     b.Property<string>("Genres")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Studios")
+                    b.Property<string>("Studio")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasDiscriminator().HasValue("Anime");
@@ -319,7 +316,7 @@ namespace ItrKurs.Migrations
                     b.Property<string>("Engine")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Year")
+                    b.Property<int>("Mileage")
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Car");

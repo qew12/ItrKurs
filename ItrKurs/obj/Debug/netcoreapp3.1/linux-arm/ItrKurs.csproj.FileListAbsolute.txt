@@ -381,3 +381,7 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Crea
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Index.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\AddBookToCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\hui.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\AddAnimeToCollection.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\AddCarToCollection.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\CreateCarCollection.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Main.cshtml.g.cs

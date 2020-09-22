@@ -24,24 +24,6 @@ function CheckedID()
 
 }
 
-$('#buttonDelete').click(function () {
-    CheckedID();
-    $.ajax({
-        url: '/Users/Delete',
-        type: 'POST',
-        data: { id: id },
-        success: function (result) {
-            if (result == 1) {
-                window.location = '/Users/';
-            }
-            else {
-                alert("Error delete");
-            }
-        }
-    });
-});
-
-
 function ShowField(bitM) {
     boolMask(bitM)
     document.getElementById("Bitmask").value = bitM;
@@ -49,7 +31,7 @@ function ShowField(bitM) {
 
 function boolMask(bitM) {
     
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 6; i++) {
         var tmp = 1 << i;
         if((bitM & tmp) == tmp)
         document.getElementById(i).style.display = 'block';
@@ -67,7 +49,6 @@ function toggle(element,id) {
         document.getElementById(id).style.display = 'none';
         bitmask &= ~(1 << element.id);
     }
-    alert(bitmask);
     document.getElementById("Bitmask").value = bitmask;
 }
 
@@ -92,47 +73,23 @@ $(document).ready(function () {
 });
 
 
-function toggleCheckbox(element) {
-    if (element.checked)
-        bitmask |= (1 << element.id);
-    else
-        bitmask &= ~(1 << element.id);
-    alert(bitmask);
-    $.ajax({
-        url: '/Book/Refresh',
-        type: 'POST',
-        data: { id: element.id },
-        success: function (result) {
-            if (result == 1) {
-                window.location = '/Book/CreateCollection';
-            }
-            else {
-                alert("Error delete");
 
-            }
-        }
-    });
-
-}
-
-$('#buttonRefresh').click(function () {
+$('#buttonDelete').click(function () {
     CheckedID();
     $.ajax({
-        url: '/Book/Refresh',
+        url: '/Users/Delete',
         type: 'POST',
         data: { id: id },
         success: function (result) {
             if (result == 1) {
-                window.location = '/Book/CreateCollection';
+                window.location = '/Users/';
             }
             else {
                 alert("Error delete");
-
             }
         }
     });
 });
-
 
 
 $('#buttonBlock').click(function () {

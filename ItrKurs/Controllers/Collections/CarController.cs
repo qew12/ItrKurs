@@ -18,9 +18,56 @@ namespace ItrKurs.Controllers.Collections
         public CarController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context,env, userManager, signInManager, httpContextAccessor)
         {
         }
-        public IActionResult Index()
+        public override IActionResult CreateCollection()
         {
-            return View();
+            _additionalFields = new string[6] { "Date", "Brand", "Country", "Engine", "Mileage", "Image" };
+            ViewBag.strArray = _additionalFields;
+            return View("~/Views/Collection/CreateCarCollection.cshtml");
         }
+
+        public IActionResult AddToCollection(byte bitMask)
+        {
+            ViewBag.bit = bitMask;
+            return View("~/Views/Collection/AddCarToCollection.cshtml");
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            _currentUser = await GetCurrentUser();
+            var cars = db.Cars.Where(p => p.UserId == _currentUser.Id && p.Discriminator == "Car").ToList();
+            if (cars != null && cars.Count > 0)
+            {
+                //ViewBag.Books = cars;
+                return AddToCollection(cars[0].bitMask);
+            }
+            else return CreateCollection();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCollection(Car car)
+        {
+            _currentUser = await GetCurrentUser();
+            _currentUser.Collections.Add(car);
+            db.Cars.Add(car);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index", "Collection");
+        }
+
+
+
+        public async Task<IActionResult> hui2()
+        {
+            _currentUser = await GetCurrentUser();
+            var books = db.Books.Where(p => p.UserId == _currentUser.Id && p.Discriminator == "Car").ToList();
+            if (books != null)
+            {
+                ViewBag.Books = books;
+                return View("~/Views/Collection/hui.cshtml");
+
+            }
+            return CreateCollection();
+        }
+
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ItrKurs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200917201200_InitialCreate")]
+    [Migration("20200922012737_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,6 @@ namespace ItrKurs.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Discription")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("IdOwner")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImgSrc")
@@ -281,7 +278,7 @@ namespace ItrKurs.Migrations
                     b.Property<string>("Genres")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Studios")
+                    b.Property<string>("Studio")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasDiscriminator().HasValue("Anime");
@@ -321,7 +318,7 @@ namespace ItrKurs.Migrations
                     b.Property<string>("Engine")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Year")
+                    b.Property<int>("Mileage")
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Car");

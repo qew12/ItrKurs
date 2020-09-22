@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ItrKurs.Models.Collection>
+@{
+    ViewBag.Title = "Все коллекции";
+}
+
+
+
+<table class="table table-hover home-content table-bordered ">
+    <thead class="thead-light">
+        <tr>
+            <th>img</th>
+            <th>Name</th>
+            <th>Discriminator</th>
+
+</tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in @ViewBag.Collections)
+        {
+        <tr>
+            <th><div class="container">
+    <div class="col-md-4 px-0"><img src="@item.ImgSrc" class="img-fluid mb-0" alt="Responsive image"></div></div>
+</th>
+            <th>@item.Name</th>
+            <th>@item.Discriminator</th>
+        </tr>
+                }
+            
+        </tbody>
+</table>

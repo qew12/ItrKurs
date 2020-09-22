@@ -15,7 +15,7 @@ namespace ItrKurs.Models
         [Required]
         public string Name { get; set; }
         public string Discription { get; set; }
-        public string IdOwner { get; set; }
+        public string UserId { get; set; }
         public DateTimeOffset Date { get; set; }
         [Required]
         public string Tags { get; set; }
@@ -33,16 +33,16 @@ namespace ItrKurs.Models
     public class Car : Collection
     {
         public string Brand { get; set; }
-        public int Year { get; set; }
         public string Country { get; set; }
         public string Engine { get; set; }
+        public int Mileage { get; set; }
     }
 
     public class Anime : Collection
     {
-        public int Episodes { get; set; }
-        public string Studios { get; set; }
         public string Genres { get; set; }
+        public string Studio { get; set; }        
         public string Author { get; set; }
+        public int Episodes { get; set; }
     }
 }

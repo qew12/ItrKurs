@@ -7,12 +7,15 @@
 
 @foreach (var item in @ViewBag.Books)
 {
-    <div class="media">
-        <img src="@item.ImgSrc" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0">@item.Name</h5>
-            <h5 class="mt-0">@item.Discriminator</h5>
-            @item.Date,@item.IdOwner,@item.Author,@item.Pages
-        </div>
+        <div class="media">
+            <img src="@item.ImgSrc" class="mr-3" alt="...">
+            <div class="media-body">
+
+                    <h5 class="mt-0">@item.Name</h5>
+                    <h5 class="mt-0">@item.Discriminator</h5>
+                    @item.Date,@item.IdOwner,@item.Author,@item.Pages
+
+            </div>
     </div>
+
 }

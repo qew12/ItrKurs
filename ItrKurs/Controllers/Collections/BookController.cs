@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
 
 namespace ItrKurs.Controllers.Collections
 {
@@ -19,7 +20,7 @@ namespace ItrKurs.Controllers.Collections
         }
         public override IActionResult CreateCollection()
         {
-            _additionalFields = new string[5] { "Date", "Genres", "Comment", "Author", "Pages"};
+            _additionalFields = new string[6] { "Date", "Genres", "Comment", "Author", "Pages", "Image"};
             ViewBag.strArray = _additionalFields;
             return View("~/Views/Collection/CreateBookCollection.cshtml");
         }
@@ -33,7 +34,7 @@ namespace ItrKurs.Controllers.Collections
         public async Task<IActionResult> hui2()
         {
             _currentUser = await GetCurrentUser();
-            var books = db.Books.Where(p => p.IdOwner == _currentUser.Id && p.Discriminator == "Book").ToList();
+            var books = db.Books.Where(p => p.UserId == _currentUser.Id && p.Discriminator == "Book").ToList();
             if (books != null)
             {
                 ViewBag.Books = books;
@@ -44,11 +45,11 @@ namespace ItrKurs.Controllers.Collections
         }
 
 
-        public async Task<IActionResult> hui()
+        public async Task<IActionResult> Create()
         {
             _currentUser = await GetCurrentUser();
-            var books = db.Books.Where(p => p.IdOwner == _currentUser.Id && p.Discriminator == "Book").ToList();
-            if (books != null)
+            var books = db.Books.Where(p => p.UserId == _currentUser.Id && p.Discriminator == "Book").ToList();
+            if (books != null && books.Count>0)
             {               
                 ViewBag.Books = books;
                 return AddToCollection(books[0].bitMask);
@@ -57,32 +58,15 @@ namespace ItrKurs.Controllers.Collections
         }
 
 
-        [HttpPost]
+        [HttpPost]        
         public async Task<IActionResult> CreateCollection(Book book)
         {
             _currentUser = await GetCurrentUser();
-            Book _book = book;
-            _book.IdOwner = _currentUser.Id;
-            //_currentUser.Collections.Add(_book);
+            _currentUser.Collections.Add(book);
 
-            db.Books.Add(_book);
+            db.Books.Add(book);
             await db.SaveChangesAsync();
             return RedirectToAction("Index", "Collection");
-        }
-
-        public IActionResult Refresh(string[] id)
-        {
-            try
-            {
-                
-                return new JsonResult(1);
-            }
-            catch
-            {
-                return new JsonResult(0);
-            }
-            
-               
         }
 
     }

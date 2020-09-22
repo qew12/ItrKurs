@@ -9,22 +9,22 @@
         Add
     </button>
     <div class="dropdown-menu">
-        <a class="dropdown-item" asp-controller="Book" asp-action="CreateCollection">Add book collection</a>
+        <a class="dropdown-item" asp-controller="Book" asp-action="Create">Add book collection</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Anime" asp-action="CreateCollection">Add anime collection</a>
+        <a class="dropdown-item" asp-controller="Anime" asp-action="Create">Add anime collection</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Car" asp-action="CreateCollection">Add car colection</a>
+        <a class="dropdown-item" asp-controller="Car" asp-action="Create">Add car colection</a>
 
     </div>
 </div>
 
-<a class="btn btn-primary" asp-controller="Book" asp-action="hui">hui</a>
 <a class="btn btn-primary" asp-controller="Book" asp-action="hui2">hui2</a>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="Main">Личка</a>
 
 <table class="table">
-    <tr><td>Имя</td><td>Возраст</td></tr>
+    <tr><td>Name</td><td>Discription</td><td>Discriminator</td></tr>
     @foreach (var item in Model)
     {
-        <tr><td>@item.Name</td><td>@item.Discription</td></tr>
+        <tr><td>@item.Name</td><td>@item.Discription</td><td>@item.Discriminator</td></tr>
     }
 </table>

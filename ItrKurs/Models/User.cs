@@ -9,6 +9,10 @@ namespace ItrKurs.Models
 {
     public class User : IdentityUser
     {
+        public User() : base()
+        {
+            Collections = new List<Collection>();
+        }
         public DateTimeOffset DateCreate { get; set; }
         public DateTimeOffset Lastlogin { get; set; }
         public string Status { get; set; }

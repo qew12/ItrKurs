@@ -1,0 +1,104 @@
+﻿@model ItrKurs.Models.Car
+@{
+    ViewBag.Title = "Добавление car коллекции";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <table class="table table-hover home-content table-bordered ">
+        <thead class="thead-light">
+            <tr>
+                @for (int i = 0; i < @ViewBag.strArray.Length; ++i)
+                {
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="@i" onclick="toggle(this,'@i'+'a')">
+                            <label class="custom-control-label" for="@i">@ViewBag.strArray[@i]</label>
+                        </div>
+                    </td>
+                }
+            </tr>
+        </thead>
+    </table>
+
+
+    <form asp-action="CreateCollection" asp-controller="Car">
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input type="text" asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Discription" class="control-label">Описание</label>
+            <input type="text" asp-for="Discription" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Tags" class="control-label">Tags</label>
+            <input type="text" asp-for="Tags" class="form-control" />
+        </div>
+
+
+        <div class="form-group" style="display:none" id="0a">
+            <label asp-for="Date" class="control-label">Date</label>
+            <input type="date" asp-for="Date" class="form-control" />
+        </div>
+
+
+        <div class="form-group" style="display:none" id="1a">
+            <label asp-for="Brand" class="control-label">Brand</label>
+            <input type="text" asp-for="Brand" class="form-control" />
+        </div>
+
+        <div class="form-group" style="display:none" id="2a">
+            <label asp-for="Country" class="control-label">Country</label>
+            <input type="text" asp-for="Country" class="form-control" />
+        </div>
+
+        <div class="form-group" style="display:none" id="3a">
+            <label asp-for="Engine" class="control-label">Engine</label>
+            <input type="text" asp-for="Engine" class="form-control" />
+        </div>
+
+        <div class="form-group" style="display:none" id="4a">
+            <label asp-for="Mileage" class="control-label">Mileage</label>
+            <input type="number" asp-for="Mileage" class="form-control" />
+        </div>
+
+        <div class="form-group" style="display:none">
+            <label asp-for="ImgSrc" class="control-label">ImgSrc</label>
+            <input type="text" id="ImgSrc" asp-for="ImgSrc" class="form-control" />
+        </div>
+
+
+        <div class="form-group" style="display:none">
+            <label asp-for="bitMask" class="control-label">bitMask</label>
+            <input type="text" id="Bitmask" asp-for="bitMask" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Отправить" class="btn btn-default" />
+        </div>
+
+    </form>
+    <div class="form-group" style="display:none" id="5a">
+        <form method="post" enctype="multipart/form-data">
+            <div id="fileBasket" class="dropZone">
+                <div id="dropZone">
+                    Theare are
+                </div>
+            </div>
+
+            <br />
+            <div class="spinner-border" role="status" id="progress">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <div style="text-align:center">
+        <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Sign In</a>
+        <a class="btn btn-success" asp-controller="Account" asp-action="Register">Sign Up</a>
+    </div>
+}
