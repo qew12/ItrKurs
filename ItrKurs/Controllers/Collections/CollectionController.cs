@@ -20,13 +20,12 @@ namespace ItrKurs.Controllers
     {
         public static string[] _additionalFields;
         public ApplicationDbContext db;
-        [Obsolete]
-        private IHostingEnvironment hostingEnv;
+        private IWebHostEnvironment hostingEnv;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         public User _currentUser;
 
-        public CollectionController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor)
+        public CollectionController(ApplicationDbContext context, IWebHostEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor)
         {
             this.hostingEnv = env ?? throw new ArgumentNullException(nameof(env));
             db = context;

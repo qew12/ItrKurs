@@ -15,17 +15,17 @@ namespace ItrKurs.Controllers.Collections
 {
     public class BookController : CollectionController
     {
-        public BookController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context, env, userManager, signInManager, httpContextAccessor)
+        public BookController(ApplicationDbContext context, IWebHostEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context, env, userManager, signInManager, httpContextAccessor)
         {
         }
         public override IActionResult CreateCollection()
         {
-            _additionalFields = new string[6] { "Date", "Genres", "Comment", "Author", "Pages", "Image"};
+            _additionalFields = new string[] { "Date", "Genres", "Comment", "Author", "Pages", "Image", "Bool1", "Bool2", "Bool3", "Int1", "Int2", "Int3", "Longtext1", "Longtext2", "Longtext3" };
             ViewBag.strArray = _additionalFields;
             return View("~/Views/Collection/CreateBookCollection.cshtml");
         }
 
-        public  IActionResult AddToCollection(byte bitMask)
+        public  IActionResult AddToCollection(int bitMask)
         {
             ViewBag.bit = bitMask;       
             return View("~/Views/Collection/AddBookToCollection.cshtml");
@@ -61,6 +61,7 @@ namespace ItrKurs.Controllers.Collections
         [HttpPost]        
         public async Task<IActionResult> CreateCollection(Book book)
         {
+            book.DateCreate = DateTimeOffset.Now;
             _currentUser = await GetCurrentUser();
             _currentUser.Collections.Add(book);
 

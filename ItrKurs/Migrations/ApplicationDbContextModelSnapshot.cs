@@ -23,7 +23,13 @@ namespace ItrKurs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Comments")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTimeOffset>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTimeOffset>("DateCreate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Discriminator")
@@ -34,6 +40,9 @@ namespace ItrKurs.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImgSrc")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Likes")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
@@ -47,8 +56,35 @@ namespace ItrKurs.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<byte>("bitMask")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<int>("bitMask")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("bool1")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("bool2")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("bool3")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("int1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("int2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("int3")
+                        .HasColumnType("int");
+
+                    b.Property<string>("longtext1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("longtext2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("longtext3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

@@ -15,17 +15,17 @@ namespace ItrKurs.Controllers.Collections
     public class AnimeController : CollectionController
     {
         [Obsolete]
-        public AnimeController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context, env, userManager, signInManager, httpContextAccessor)
+        public AnimeController(ApplicationDbContext context, IWebHostEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context, env, userManager, signInManager, httpContextAccessor)
         {
         }
         public override IActionResult CreateCollection()
         {
-            _additionalFields = new string[6] { "Date", "Genres", "Studio", "Author", "Episodes", "Image" };
+            _additionalFields = new string[] { "Date", "Genres", "Studio", "Author", "Episodes", "Image", "Bool1", "Bool2", "Bool3", "Int1", "Int2", "Int3", "Longtext1", "Longtext2", "Longtext3" };
             ViewBag.strArray = _additionalFields;
             return View("~/Views/Collection/CreateAnimeCollection.cshtml");
         }
 
-        public IActionResult AddToCollection(byte bitMask)
+        public IActionResult AddToCollection(int bitMask)
         {
             ViewBag.bit = bitMask;
             return View("~/Views/Collection/AddAnimeToCollection.cshtml");
@@ -61,6 +61,7 @@ namespace ItrKurs.Controllers.Collections
         [HttpPost]
         public async Task<IActionResult> CreateCollection(Anime anime)
         {
+            anime.DateCreate = DateTimeOffset.Now;
             _currentUser = await GetCurrentUser();
             _currentUser.Collections.Add(anime);
             db.Animes.Add(anime);

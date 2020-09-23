@@ -15,17 +15,17 @@ namespace ItrKurs.Controllers.Collections
     public class CarController : CollectionController
     {
 
-        public CarController(ApplicationDbContext context, IHostingEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context,env, userManager, signInManager, httpContextAccessor)
+        public CarController(ApplicationDbContext context, IWebHostEnvironment env, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor) : base(context,env, userManager, signInManager, httpContextAccessor)
         {
         }
         public override IActionResult CreateCollection()
         {
-            _additionalFields = new string[6] { "Date", "Brand", "Country", "Engine", "Mileage", "Image" };
+            _additionalFields = new string[] { "Date", "Brand", "Country", "Engine", "Mileage", "Image", "Bool1", "Bool2", "Bool3", "Int1", "Int2", "Int3", "Longtext1", "Longtext2", "Longtext3" };
             ViewBag.strArray = _additionalFields;
             return View("~/Views/Collection/CreateCarCollection.cshtml");
         }
 
-        public IActionResult AddToCollection(byte bitMask)
+        public IActionResult AddToCollection(int bitMask)
         {
             ViewBag.bit = bitMask;
             return View("~/Views/Collection/AddCarToCollection.cshtml");
@@ -47,6 +47,7 @@ namespace ItrKurs.Controllers.Collections
         [HttpPost]
         public async Task<IActionResult> CreateCollection(Car car)
         {
+            car.DateCreate = DateTimeOffset.Now;
             _currentUser = await GetCurrentUser();
             _currentUser.Collections.Add(car);
             db.Cars.Add(car);
