@@ -42,7 +42,7 @@ namespace ItrKurs.Controllers
             foreach (var file in files)
             {
                 string filename = hostingEnv.WebRootPath
-        + $"\\uploadedfiles\\{file.FileName}";
+        + $"//uploadedfiles//{file.FileName}";
                 name = file.FileName;
                 size += file.Length;
                 using (FileStream fs = System.IO.File.Create(filename))
