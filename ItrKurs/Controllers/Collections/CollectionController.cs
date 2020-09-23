@@ -53,7 +53,7 @@ namespace ItrKurs.Controllers
             }
             
             string message = $"{name}  uploaded successfully!";
-            name = $@"\uploadedfiles\{name}";
+            name = $@"/uploadedfiles/{name}";
             return Json(name);
         }
 
