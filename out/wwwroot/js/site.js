@@ -38,7 +38,7 @@ function boolMask(bitM) {
     }
 }
 
-function toggle(element,id) {
+function toggle(element, id) {
     if (element.checked) {
         bitmask |= (1 << element.id);
         document.getElementById(id).style.display = 'block';
@@ -50,6 +50,8 @@ function toggle(element,id) {
         bitmask &= ~(1 << element.id);
     }
     document.getElementById("Bitmask").value = bitmask;
+    alert(bitmask);
+    
 }
 
 $(document).ready(function () {
