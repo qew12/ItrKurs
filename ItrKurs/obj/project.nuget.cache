@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lhr+MVHDod7WIOnzIKPScwdl9uOI2V98fF79Uy/OkdjAfM7CbrWmCiRS4s7dYHsSMDnFJlbQ+fMmfC0g75vJAQ==",
+  "dgSpecHash": "FAQjy1wsuc2z+BhIkDbWl03UHCDV5uHQ6eWzCGj1iN+dlWwn0tkyvNdh6HrXHf6Jf+XE2AkZrdYIfQ1KchxlAg==",
   "success": true,
   "projectFilePath": "F:\\ItrKurs\\ItrKurs\\ItrKurs.csproj",
   "expectedPackageFiles": [
@@ -67,10 +67,7 @@
     "C:\\Users\\qew\\.nuget\\packages\\system.security.cryptography.xml\\4.5.0\\system.security.cryptography.xml.4.5.0.nupkg.sha512",
     "C:\\Users\\qew\\.nuget\\packages\\system.security.permissions\\4.5.0\\system.security.permissions.4.5.0.nupkg.sha512",
     "C:\\Users\\qew\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
-    "C:\\Users\\qew\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\qew\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm\\3.1.7\\microsoft.netcore.app.runtime.linux-arm.3.1.7.nupkg.sha512",
-    "C:\\Users\\qew\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm\\3.1.7\\microsoft.aspnetcore.app.runtime.linux-arm.3.1.7.nupkg.sha512",
-    "C:\\Users\\qew\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm\\3.1.7\\microsoft.netcore.app.host.linux-arm.3.1.7.nupkg.sha512"
+    "C:\\Users\\qew\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

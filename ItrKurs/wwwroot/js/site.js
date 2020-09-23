@@ -50,6 +50,7 @@ function toggle(element,id) {
         bitmask &= ~(1 << element.id);
     }
     document.getElementById("Bitmask").value = bitmask;
+    alert(bitmask);
 }
 
 $(document).ready(function () {
