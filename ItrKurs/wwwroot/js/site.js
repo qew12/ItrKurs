@@ -24,14 +24,41 @@ function CheckedID()
 
 }
 
+var str;
+function comment(idTextArea, id) {
+    str = document.getElementById(idTextArea).value;
+    $.ajax({
+        url: '/Collection/Comment',
+        type: 'POST',
+        data: { id: id, str: str},
+        success: function (result) {
+            if (result == 1) {
+                window.location = '/Collection/Details/'+id;
+            }
+            else {
+                alert("Error");
+            }
+        }
+    });
+}
+
 function ShowField(bitM) {
     boolMask(bitM)
     document.getElementById("Bitmask").value = bitM;
 }
 
+function ShowFieldTable(bitM) {
+    for (var i = 0; i < 10; i++) {
+        var tmp = 1 << i;
+        if ((bitM & tmp) !== tmp) {
+            document.getElementById(i).style.display = 'none';
+            document.getElementById(i + 'a').style.display = 'none';}            
+    }
+}
+
 function boolMask(bitM) {
     
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < 10; i++) {
         var tmp = 1 << i;
         if((bitM & tmp) == tmp)
         document.getElementById(i).style.display = 'block';
@@ -49,9 +76,7 @@ function toggle(element, id) {
         document.getElementById(id).style.display = 'none';
         bitmask &= ~(1 << element.id);
     }
-    document.getElementById("Bitmask").value = bitmask;
-    alert(bitmask);
-    
+    document.getElementById("Bitmask").value = bitmask;   
 }
 
 $(document).ready(function () {

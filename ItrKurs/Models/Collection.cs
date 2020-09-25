@@ -14,31 +14,35 @@ namespace ItrKurs.Models
         public string ImgSrc { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Discription { get; set; }
-        public string UserId { get; set; }
-        public DateTimeOffset Date { get; set; }
         [Required]
         public string Tags { get; set; }
+
+        public string UserId { get; set; }
+
+
+        public DateTimeOffset Date { get; set; }
         public DateTimeOffset DateCreate { get; set; }
 
-        public bool bool1 { get; set; }
-        public bool bool2 { get; set; }
-        public bool bool3 { get; set; }
+        public bool Bool1 { get; set; }
+        public bool Bool2 { get; set; }
+        public bool Bool3 { get; set; }
 
-        public int int1 { get; set; }
-        public int int2 { get; set; }
-        public int int3 { get; set; }
+        public int Int1 { get; set; }
+        public int Int2 { get; set; }
+        public int Int3 { get; set; }
 
-        public string longtext1 { get; set; }
-        public string longtext2 { get; set; }
-        public string longtext3 { get; set; }
+        public string Longtext1 { get; set; }
+        public string Longtext2 { get; set; }
+
 
         public string Comments { get; set; }
         public string Likes { get; set; }
 
 
     }
-
+    /*
     public class Book : Collection
     {
         public string Genres { get; set; }
@@ -59,8 +63,9 @@ namespace ItrKurs.Models
     public class Anime : Collection
     {
         public string Genres { get; set; }
-        public string Studio { get; set; }        
+        public string Studio { get; set; }
         public string Author { get; set; }
         public int Episodes { get; set; }
     }
+    */
 }

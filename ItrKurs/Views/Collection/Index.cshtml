@@ -2,23 +2,21 @@
 @{
     ViewBag.Title = "Все коллекции";
 }
-<a class="btn btn-success" asp-action="CreateCollection">Добавить коллекцию</a>
 
 <div class="btn-group">
     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Add
     </button>
     <div class="dropdown-menu">
-        <a class="dropdown-item" asp-controller="Book" asp-action="Create">Add book collection</a>
+        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateBook">Add book collection</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Anime" asp-action="Create">Add anime collection</a>
+        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateAnime">Add anime collection</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Car" asp-action="Create">Add car colection</a>
+        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateCar">Add car colection</a>
 
     </div>
 </div>
 
-<a class="btn btn-primary" asp-controller="Book" asp-action="hui2">hui2</a>
 <a class="btn btn-primary" asp-controller="Collection" asp-action="Main">Личка</a>
 
 <table class="table">

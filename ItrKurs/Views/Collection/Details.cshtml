@@ -1,0 +1,84 @@
+﻿@model ItrKurs.Models.Collection
+@{
+    ViewBag.Title = Model.Name;
+}
+<h2>Item @Model.Name</h2>
+<body onload="ShowFieldTable(@Model.bitMask);">
+</body>
+<table class="table table-hover home-content table-bordered ">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Discription</th>
+            <th>Tags</th>
+            <th>DateCreate</th>
+            @for (int i = 0; i < @ViewBag.m_additionalFields.Length; ++i)
+            {
+                <th id="@(i+"a")">
+                    @ViewBag.m_additionalFields[@i]
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Discription</td>
+            <td>@Model.Tags</td>
+            <td>@Model.DateCreate</td>
+            <td id="0">@Model.Date</td>
+            <td id="1">@Model.Int1</td>
+            <td id="2">@Model.Int2</td>
+            <td id="3">@Model.Int3</td>
+            <td id="4">@Model.Bool1</td>
+            <td id="5">@Model.Bool2</td>
+            <td id="6">@Model.Bool3</td>
+            <td id="7">@Model.Longtext1</td>
+            <td id="8">@Model.Longtext2</td>
+            <td id="9">
+                <img src="@Model.ImgSrc" width="250" alt="Responsive image">
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+<h4>Коментарии</h4>
+<hr />
+@foreach ((string, string) s in ViewBag.Comments)
+{
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-2">
+                <div class="container">
+                    <div class="col-xl-9 px-0"><img src="\uploadedfiles\avatar-user.png" class="img-fluid" alt="Responsive image"></div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="col ">
+
+                    <div class="row"><p class="font-weight-bold">@s.Item1</p></div>
+
+                    <div class="row"><p class="font-italic">@s.Item2</p></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr />
+  }
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 ">
+            <textarea class="form-control" rows="2" placeholder="Comment here...." aria-label="Comment here" id="CommentId"></textarea>
+        </div>
+        <div class="col-sm-1 ">
+            <div class="align-bottom">
+                <button class="btn btn-outline-info " type="submit" onclick="comment('CommentId','@Model.Id')">Send</button>
+            </div>
+        </div>
+        </div>
+    </div>

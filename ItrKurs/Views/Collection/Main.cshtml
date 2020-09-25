@@ -11,19 +11,29 @@
             <th>img</th>
             <th>Name</th>
             <th>Discriminator</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
 
-</tr>
+        </tr>
     </thead>
     <tbody>
 
         @foreach (var item in @ViewBag.Collections)
         {
         <tr>
-            <th><div class="container">
-    <div class="col-md-4 px-0"><img src="@item.ImgSrc" class="img-fluid mb-0" alt="Responsive image"></div></div>
-</th>
+            <th>
+                <div class="container">
+                    <div class="col-md-4 px-0"><img src="@item.ImgSrc" class="img-fluid mb-0" alt="Responsive image"></div>
+                </div>
+            </th>
             <th>@item.Name</th>
             <th>@item.Discriminator</th>
+            <th> <a class="btn btn-outline-primary" asp-action="@("Edit" + item.Discriminator)" asp-controller="Collection" asp-route-id="@item.Id">Edit</a> </th>
+
+            <th> <a class="btn btn-outline-primary" asp-action="Details" asp-controller="Collection" asp-route-id="@item.Id">Details</a> </th>
+            
+            <th> <a class="btn btn-outline-primary" asp-action="Delete" asp-controller="Collection" asp-route-id="@item.Id">Delete</a> </th>
         </tr>
                 }
             
