@@ -1,0 +1,90 @@
+﻿@model ItrKurs.Models.Collection
+@{
+    ViewBag.Title = " коллекции";
+}
+
+<div class="btn-group">
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Add
+    </button>
+    <div class="dropdown-menu">
+        <form class="form-inline my-2 my-lg-0" asp-action="Create" asp-controller="Collection" asp-route-discriminator="Book" asp-route-userId="@ViewBag.userId">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Add book collection </button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <form class="form-inline my-2 my-lg-0" asp-action="Create" asp-controller="Collection" asp-route-discriminator="Car" asp-route-userId="@ViewBag.userId">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Add car colection</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <form class="form-inline my-2 my-lg-0" asp-action="Create" asp-controller="Collection" asp-route-discriminator="Anime" asp-route-userId="@ViewBag.userId">
+
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Add anime collection</button>
+        </form>
+    </div>
+    </div>
+
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Delete
+        </button>
+        <div class="dropdown-menu">
+            <form class="form-inline my-2 my-lg-0" asp-action="DeleteCollection" asp-controller="Collection" asp-route-discriminator="Book" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Delete book collection </button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <form class="form-inline my-2 my-lg-0" asp-action="DeleteCollection" asp-controller="Collection" asp-route-discriminator="Car" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Delete car colection</button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <form class="form-inline my-2 my-lg-0" asp-action="DeleteCollection" asp-controller="Collection" asp-route-discriminator="Anime" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Delete anime collection</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Colections</h6>
+        <div class="media text-muted pt-3">
+            <img src="\uploadedfiles\collection.png" width="48" alt="Responsive image">
+
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Collection of books</strong>
+                Your Books collection consist: @ViewBag.bookLen items.
+            </p>
+            <form class="form-inline my-2 my-lg-0" asp-action="ItemView" asp-controller="Collection" asp-route-discriminator="Book" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Show</button>
+            </form>
+        </div>
+
+        <div class="media text-muted pt-3">
+            <img src="\uploadedfiles\collection.png" width="48" alt="Responsive image"><p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Collection of cars</strong>
+                Your Cars collection consist: @ViewBag.carLen items.
+            </p>
+            <form class="form-inline my-2 my-lg-0" asp-action="ItemView" asp-controller="Collection" asp-route-discriminator="Car" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Show</button>
+            </form>
+        </div>
+        <div class="media text-muted pt-3">
+            <img src="\uploadedfiles\collection.png" width="48" alt="Responsive image"><p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Collection of anime</strong>
+                Your Anime collection consist: @ViewBag.animeLen items.
+            </p>
+            <form class="form-inline my-2 my-lg-0" asp-action="ItemView" asp-controller="Collection" asp-route-discriminator="Anime" asp-route-userId="@ViewBag.userId">
+
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Show</button>
+            </form>
+        </div>
+        <small class="d-block text-right mt-3">
+            <a href="#">All updates</a>
+        </small>
+    </div>

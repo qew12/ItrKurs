@@ -377,9 +377,11 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\ItrKurs.pdb
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\ItrKurs.genruntimeconfig.cache
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\CreateCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Index.cshtml.g.cs
-F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\hui.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Main.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\AddToCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Delete.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Details.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\EditCollection.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\CollectionView.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\ItemView.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\linux-arm\Razor\Views\Collection\Test.cshtml.g.cs

@@ -16,13 +16,42 @@
 
     </div>
 </div>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="SortView">Sort</a>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="Main">Main</a>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="ItemView">ItemView</a>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="CollectionView">CollectionView</a>
+<a class="btn btn-primary" asp-controller="Collection" asp-action="Test">CollectionView</a>
 
-<a class="btn btn-primary" asp-controller="Collection" asp-action="Main">Личка</a>
 
-<table class="table">
-    <tr><td>Name</td><td>Discription</td><td>Discriminator</td></tr>
-    @foreach (var item in Model)
-    {
-        <tr><td>@item.Name</td><td>@item.Discription</td><td>@item.Discriminator</td></tr>
-    }
-</table>
+<main role="main" class="container">
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Top 3 collections by size</h6>
+        @foreach (var item in ViewBag.Top3) {
+        <div class="media text-muted pt-3">
+            <img src="\uploadedfiles\collection.png" width="48" alt="Responsive image">
+
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">User: @item.Item1  Collection of @(item.Item2)</strong>
+                This @(item.Item2) collection contains: @item.Item3 items.
+            </p>         
+        </div>
+        }
+
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Recently updated collections</h6>
+        @foreach (var item in ViewBag.last3)
+        {
+            <div class="media text-muted pt-3">
+                <img src="\uploadedfiles\item.png" width="48" alt="Responsive image">
+
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Item name: @(item.Name) in @(item.Discriminator) collections</strong>
+                    Description: @(item.Discription).
+                </p>
+            </div>
+        }
+    </div>
+</main>

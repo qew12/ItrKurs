@@ -36,7 +36,7 @@
             <td id="7">@Model.Longtext1</td>
             <td id="8">@Model.Longtext2</td>
             <td id="9">
-                <img src="@Model.ImgSrc" width="250" alt="Responsive image">
+                <img src="@(Model.ImgSrc!=null ? Model.ImgSrc : "\\uploadedfiles\\item.png")" width="250" alt="\uploadedfiles\item.png">
             </td>
 
 
@@ -53,7 +53,7 @@
 
             <div class="col-sm-2">
                 <div class="container">
-                    <div class="col-xl-9 px-0"><img src="\uploadedfiles\avatar-user.png" class="img-fluid" alt="Responsive image"></div>
+                    <div class="col-xl-9 px-0"><img src="\uploadedfiles\avatar-user.png" class="img-fluid" alt="\uploadedfiles\item.png"></div>
                 </div>
             </div>
             <div class="col-sm-9">

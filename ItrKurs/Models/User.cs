@@ -19,6 +19,8 @@ namespace ItrKurs.Models
         public bool IsSelected { get; set; }
         public List<Collection> Collections { get; set; }
 
+        //public string Role { get; set; }
+
     }
 
     

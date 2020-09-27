@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ItrKurs.Models.Collection>
+@{
+    ViewBag.Title = "Test коллекции";
+}
+
+
+
+@foreach (var c in ViewBag.item)
+{
+    @c.Name
+    @c.Count
+}
