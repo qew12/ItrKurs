@@ -9,26 +9,27 @@
             <tr>
                 @for (int i = 0; i < @ViewBag.m_additionalFields.Length; ++i)
                 {
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="@i" onclick="toggle(this,'@i'+'a')">
-                            <label class="custom-control-label" for="@i">@ViewBag.m_additionalFields[@i]</label>
-                        </div>
-                    </td>
+                @if(i==1)continue;
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="@i" onclick="toggle(this,'@i'+'a')">
+                        <label class="custom-control-label" for="@i">@ViewBag.m_additionalFields[@i]</label>
+                    </div>
+                </td>
                 }
             </tr>
         </thead>
     </table>
 
 
-    <form asp-action="CreateCollection" asp-controller="Collection">
+    <form asp-action="CreateCollection" asp-controller="Collection" asp-route-userId="@ViewBag.ID">
 
         <div class="form-group">
             <label asp-for="Name" class="control-label">Name</label>
             <input type="text" asp-for="Name" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Discription" class="control-label">Discription</label>
+            <label asp-for="Discription" class="control-label">Description</label>
             <input type="text" asp-for="Discription" class="form-control" />
         </div>
 
@@ -51,6 +52,7 @@
             <label asp-for="Int1" class="control-label">@ViewBag.m_additionalFields[1]</label>
             <input type="number" asp-for="Int1" class="form-control" />
         </div>
+
         <div class="form-group" style="display:none" id="2a">
             <label asp-for="Int2" class="control-label">@ViewBag.m_additionalFields[2]</label>
             <input type="number" asp-for="Int2" class="form-control" />

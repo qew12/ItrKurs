@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ItrKurs.Models.Collection>
+@{
+    ViewBag.Title = "All Item";
+}
+
+
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <h6 class="border-bottom border-gray pb-2 mb-0">All Items</h6>
+    @foreach (var item in @Model)
+    {
+<div class="media text-muted pt-3">
+    <img src="\uploadedfiles\item.png" width="48" alt="Responsive image">
+
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">Item name: @(item.Name) in @(item.Discriminator) collections</strong>
+        Description: @(item.Discription).
+    </p>
+    <a class="btn btn-outline-primary" asp-action="Details" asp-controller="Collection" asp-route-id="@item.Id">Details</a>
+
+</div>
+    }
+</div>

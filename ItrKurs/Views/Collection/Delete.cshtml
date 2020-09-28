@@ -5,12 +5,12 @@
 
 <div>
     <dl class="dl-horizontal">
-        <dt>Имя</dt>
+        <dt>Name</dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>Возраст</dt>
+        <dt>Descriminator</dt>
         <dd>
             @Html.DisplayFor(model => model.Discriminator)
         </dd>
@@ -19,7 +19,7 @@
     <div>
         <form asp-controller="Collection" asp-action="Delete" method="post">
             <div class="form-group">
-                <input type="submit" class="btn btn-default" value="Удалить" />
+                <input type="submit" class="btn btn-default" value="Remove" />
             </div>
         </form>
     </div>

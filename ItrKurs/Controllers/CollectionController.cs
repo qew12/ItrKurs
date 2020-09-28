@@ -115,8 +115,13 @@ namespace ItrKurs.Controllers
         {
                 return new JsonResult(1);        
         }
-       
-        public async Task<IActionResult> CollectionView(string userId)
+
+        public async Task<IActionResult> AllItemView()
+        {
+            return View( await db.Collections.ToListAsync());
+        }
+
+            public async Task<IActionResult> CollectionView(string userId)
         {
             IQueryable<Collection> collections;
             int bookLen = 0, carLen = 0, animeLen = 0;
@@ -126,6 +131,7 @@ namespace ItrKurs.Controllers
             }
             else {
                 _currentUser = await GetCurrentUser();
+                if(_currentUser==null) return RedirectToAction("Index", "Collection");
                 userId = _currentUser.Id;
                 collections = db.Collections.Where(p => p.UserId == userId);
             }
@@ -170,8 +176,7 @@ namespace ItrKurs.Controllers
             {
                 collections = collections.Where(p => p.Name.Contains(name));
             }
-            //ViewBag.userId = userId;
-            //ViewBag.discriminator = _discriminator;
+
 
             switch (sortOrder)
             {
@@ -211,47 +216,69 @@ namespace ItrKurs.Controllers
 
         public async Task<IActionResult> Create(string discriminator ,string userId)
         {
-            List<Collection> collections;
-            _discriminator = discriminator;
-            await RedirectToView(userId);
-            if (!String.IsNullOrEmpty(userId))
-            {
-                collections = await db.Collections.Where(p => p.UserId == userId && p.Discriminator == _discriminator).ToListAsync();
-            }
-            else
-            {
-                _currentUser = await GetCurrentUser();
-                userId = _currentUser.Id;
-                collections = await db.Collections.Where(p => p.UserId == userId && p.Discriminator == _discriminator).ToListAsync();
-            }
-        
-            if (collections != null && collections.Count > 0)
-            {
-                return AddToCollection(collections[0].bitMask);
-            }
-            else return CreateCollection();
+            
+                List<Collection> collections;
+                _discriminator = discriminator;
+                await RedirectToView(userId);
+                if (!String.IsNullOrEmpty(userId))
+                {
+                    collections = await db.Collections.Where(p => p.UserId == userId && p.Discriminator == _discriminator).ToListAsync();
+                }
+                else
+                {
+                    _currentUser = await GetCurrentUser();
+                    userId = _currentUser.Id;
+                    collections = await db.Collections.Where(p => p.UserId == userId && p.Discriminator == _discriminator).ToListAsync();
+                }
+
+                if (collections != null && collections.Count > 0)
+                {
+                    return await AddToCollection(collections[0].bitMask,userId);
+                }
+                else return await CreateCollection(userId);
+            
+           
         }
-        public IActionResult CreateCollection()
+        public async Task<IActionResult> CreateCollection(string userId)
         {
             PostData(null);
+            _currentUser = await GetCurrentUser();
+            if (String.IsNullOrEmpty(userId)) userId = _currentUser.Id;
+            ViewBag.ID = userId;
             return View("~/Views/Collection/CreateCollection.cshtml");
         }
-        public IActionResult AddToCollection(int bitMask)
+        public async Task<IActionResult> AddToCollection(int bitMask,string userId)
         {
             PostData(bitMask);
+            _currentUser = await GetCurrentUser();
+            if (String.IsNullOrEmpty(userId)) userId= _currentUser.Id;
+            ViewBag.ID = userId;
             return View("~/Views/Collection/AddToCollection.cshtml");
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCollection(Collection collection)
+        public async Task<IActionResult> CreateCollection(Collection collection ,string userId)
         {
-            collection.DateCreate = DateTimeOffset.Now;
-            _currentUser = await GetCurrentUser();
-            _currentUser.Collections.Add(collection);
 
-            db.Collections.Add(collection);
-            await db.SaveChangesAsync();
-            return RedirectToAction("CollectionView", "Collection");
+                collection.DateCreate = DateTimeOffset.Now;
+                _currentUser = await GetCurrentUser();
+                if (String.IsNullOrEmpty(userId)) userId = _currentUser.Id;
+
+                User user = await db.Users.FirstOrDefaultAsync(p => p.Id == userId);
+                user.Collections.Add(collection);
+
+                db.Collections.Add(collection);
+                await db.SaveChangesAsync();
+                return RedirectToAction("CollectionView", "Collection");
+            
+           
+
+        }
+
+
+        public IActionResult Error()
+        {         
+            return View();
         }
 
         public Task<IActionResult> EditBook(int? id)
@@ -286,9 +313,11 @@ namespace ItrKurs.Controllers
         [HttpPost]
         public async Task<IActionResult> EditCollection(Collection collection)
         {
-            db.Collections.Update(collection);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Main", "Collection");
+            
+                db.Collections.Update(collection);
+                await db.SaveChangesAsync();
+                return RedirectToAction("CollectionView", "Collection");
+
         }
 
 

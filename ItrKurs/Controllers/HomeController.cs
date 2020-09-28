@@ -20,7 +20,7 @@ namespace ItrKurs.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Collection");
         }
 
         public IActionResult Privacy()

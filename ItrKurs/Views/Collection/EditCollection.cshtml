@@ -1,17 +1,17 @@
 ﻿@model ItrKurs.Models.Collection
 @{
-    ViewBag.Title = $"Редактирование {Model.Discriminator}";
+    ViewBag.Title = $"Edit {Model.Discriminator}";
 }
 <body onload="ShowField(@Model.bitMask);">
 </body>
 
 <form asp-action="EditCollection" asp-controller="Collection" asp-route-id="@Model.Id">
     <div class="form-group">
-        <label asp-for="Name" class="control-label">Название</label>
+        <label asp-for="Name" class="control-label">Name</label>
         <input type="text" asp-for="Name" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Discription" class="control-label">Описание</label>
+        <label asp-for="Discription" class="control-label">Description</label>
         <input type="text" asp-for="Discription" class="form-control" />
     </div>
 

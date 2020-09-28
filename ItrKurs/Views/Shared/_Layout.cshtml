@@ -23,11 +23,17 @@
                     <li class="nav-item active">
                         <a class="nav-link" asp-area="" asp-controller="Collection" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Collection" asp-action="AllItemView">All Item <span class="sr-only">(current)</span></a>
+                    </li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Collection" asp-action="CollectionView">My Collection</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Collection" asp-action="CollectionView">My Collections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">Controll Panel</a>
+                    </li>
                     }
                 </ul>
 
@@ -55,16 +61,6 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="1">
                     <button class="btn btn-outline-success my-2 my-sm-0" onclick="search('1')">Search</button>
                 </form>
-
-
-        
-
-
-                <form class="form-inline my-2 my-lg-0" asp-action="Search" asp-controller="Collection" method="post">
-                    <input class="form-control mr-sm-2" name="text" asp-route-text="" type="search" placeholder="Search" aria-label="Search" id="1">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Show</button>
-                </form>
-
 
             </div>
         </nav>

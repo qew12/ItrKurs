@@ -12,11 +12,14 @@ namespace ItrKurs.Models
         public int Id { get; set; }
         public string Discriminator { get; set; }
         public string ImgSrc { get; set; }
-        [Required]
+        //[Required]
+        [Display(Name = "Name")]
         public string Name { get; set; }
-        [Required]
+        //[Required]
+        [Display(Name = "Discription")]
         public string Discription { get; set; }
-        [Required]
+        //[Required]
+        [Display(Name = "Tags")]
         public string Tags { get; set; }
 
         public string UserId { get; set; }

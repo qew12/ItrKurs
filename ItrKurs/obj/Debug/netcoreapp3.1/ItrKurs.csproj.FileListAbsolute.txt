@@ -87,3 +87,6 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\staticwebassets\ItrKurs.StaticWebAsse
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\staticwebassets\ItrKurs.StaticWebAssets.xml
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\ItrKurs.genruntimeconfig.cache
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Search.cshtml.g.cs
+F:\ItrKurs\ItrKurs\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\ItrKurs20200928145143 - Web Deploy\profile.arm.json
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Error.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\AllItemView.cshtml.g.cs

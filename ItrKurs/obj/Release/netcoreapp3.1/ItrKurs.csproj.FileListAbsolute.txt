@@ -87,3 +87,6 @@ F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\Details.csht
 F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\EditCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\ItemView.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\Search.cshtml.g.cs
+F:\ItrKurs\ItrKurs\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\ItrKurs20200928145143 - Web Deploy\profile.arm.json
+F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\AllItemView.cshtml.g.cs
+F:\ItrKurs\ItrKurs\obj\Release\netcoreapp3.1\Razor\Views\Collection\Error.cshtml.g.cs
