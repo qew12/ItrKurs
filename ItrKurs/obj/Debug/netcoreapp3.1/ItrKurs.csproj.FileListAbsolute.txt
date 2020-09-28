@@ -19,8 +19,6 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Details.cshtml
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\EditCollection.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Index.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\ItemView.cshtml.g.cs
-F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Main.cshtml.g.cs
-F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Test.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -88,3 +86,4 @@ F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\ItrKurs.csproj.CopyComplete
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\staticwebassets\ItrKurs.StaticWebAssets.Manifest.cache
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\staticwebassets\ItrKurs.StaticWebAssets.xml
 F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\ItrKurs.genruntimeconfig.cache
+F:\ItrKurs\ItrKurs\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Search.cshtml.g.cs

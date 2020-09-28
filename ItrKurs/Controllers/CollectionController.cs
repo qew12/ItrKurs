@@ -24,9 +24,8 @@ namespace ItrKurs.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         public User _currentUser;
+        private static string _text;
 
-
-        static readonly string[] collectionName = {"Book", "Car", "Anime"};
         static readonly Dictionary<string, string[]> _additionalFields = new Dictionary<string, string[]>
         {
             ["Book"] = new string[]{ "Date", "Pages", "Awards", "Size", "Readed", "Bool2", "Bool3", "Comment", "Genres", "Image" },
@@ -96,6 +95,26 @@ namespace ItrKurs.Controllers
             ViewBag.last3 = last3;
             
         }
+
+
+        public async Task<IActionResult> Search(string text) 
+        {
+            var collections = await db.Collections.Where(p =>
+                p.Name.Contains(text)
+                || p.Discription.Contains(text)
+                || p.Tags.Contains(text)
+                || p.Comments.Contains(text)
+                || p.Longtext1.Contains(text)
+                || p.Longtext2.Contains(text)
+                ).ToListAsync();
+            ViewBag.search = collections;
+            
+            return View();
+        }
+        public JsonResult SearchGet(string text)
+        {
+                return new JsonResult(1);        
+        }
        
         public async Task<IActionResult> CollectionView(string userId)
         {
@@ -129,10 +148,6 @@ namespace ItrKurs.Controllers
             ViewBag.animeLen = animeLen;
             return View();
         }
-
-
-
-
 
         public async Task<IActionResult> ItemView(string userId, string discriminator, string name, string description, SortState sortOrder = SortState.NameAsc)
         {
@@ -198,6 +213,7 @@ namespace ItrKurs.Controllers
         {
             List<Collection> collections;
             _discriminator = discriminator;
+            await RedirectToView(userId);
             if (!String.IsNullOrEmpty(userId))
             {
                 collections = await db.Collections.Where(p => p.UserId == userId && p.Discriminator == _discriminator).ToListAsync();
@@ -260,6 +276,7 @@ namespace ItrKurs.Controllers
                 Collection collection = await db.Collections.FirstOrDefaultAsync(p => p.Id == id);
                 if (collection != null)
                 {
+                    await RedirectToView(collection.UserId);
                     PostData(null);
                     return View("~/Views/Collection/EditCollection.cshtml", collection);
                 }
@@ -303,6 +320,7 @@ namespace ItrKurs.Controllers
             if (id != null)
             {
                 Collection collection = await db.Collections.FirstOrDefaultAsync(p => p.Id == id);
+                await RedirectToView(collection.UserId);
                 if (collection != null)
                     return View("~/Views/Collection/Delete.cshtml", collection);
             }
@@ -312,9 +330,11 @@ namespace ItrKurs.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
+            
             if (id != null)
             {
                 Collection collection = await db.Collections.FirstOrDefaultAsync(p => p.Id == id);
+                await RedirectToView(collection.UserId);
                 if (collection != null)
                 {
                     db.Collections.Remove(collection);
@@ -339,6 +359,14 @@ namespace ItrKurs.Controllers
                 }                
             }
             return comments;
+        }
+
+        public async Task<IActionResult> RedirectToView(string userid) 
+        {
+            _currentUser = await GetCurrentUser();
+            if (_currentUser.Id!= userid && _currentUser.Role!= "admin"&& !String.IsNullOrEmpty(userid))
+                return RedirectToAction("Index", "Collection");
+            return null;
         }
         public async Task<JsonResult> Comment(int? id, string str)
         {
@@ -369,6 +397,7 @@ namespace ItrKurs.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCollection(string userId, string discriminator)
         {
+            await RedirectToView(userId);
             List<Collection> collections;
             _discriminator = discriminator;
             if (!String.IsNullOrEmpty(userId))

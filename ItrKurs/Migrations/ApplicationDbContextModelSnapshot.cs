@@ -141,6 +141,9 @@ namespace ItrKurs.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Role")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 

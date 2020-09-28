@@ -10,9 +10,13 @@
             <button class="btn btn-outline-success" id="buttonDelete">Delete</button>
             <button class="btn btn-outline-info" id="buttonUnblock">Unlock</button>
             <button class="btn btn-outline-secondary" id="buttonBlock">Lock</button>
-            <form method="post" asp-controller="Account" asp-action="Logout" style="text-align:right">
-                <button type="submit" class="btn btn-warning">Sign out</button>
-            </form>
+            <button class="btn btn-outline-light" id="buttonUnRole">SetUserRole</button>
+            <button class="btn btn-outline-primary" id="buttonRole">SetAdminRole</button>
+            <div>
+                <form method="post" asp-controller="Account" asp-action="Logout" style="text-align:right">
+                    <button type="submit" class="btn btn-warning">Sign out</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -36,6 +40,8 @@
                                 <th>Login Date</th>
                                 <th>IsLocked</th>
                                 <th>LockoutEndAt</th>
+                                <th>Role</th>
+                                <th>Go to his collection</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +61,13 @@
                 <td>@item.Lastlogin</td>
                 <td>@item.IsSelected</td>
                 <td>@item.LockoutEnd</td>
+                <td>@item.Role</td>
+                <td>
+                    <form class="form-inline my-2 my-lg-0" asp-action="CollectionView" asp-controller="Collection" asp-route-userId="@item.Id">
+
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Show</button>
+                    </form>
+                </td>
 
             </tr>}
                         </tbody>

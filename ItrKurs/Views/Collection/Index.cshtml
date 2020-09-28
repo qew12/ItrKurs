@@ -3,27 +3,9 @@
     ViewBag.Title = "Все коллекции";
 }
 
-<div class="btn-group">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Add
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateBook">Add book collection</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateAnime">Add anime collection</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Collection" asp-action="CreateCar">Add car colection</a>
-
-    </div>
-</div>
-<a class="btn btn-primary" asp-controller="Collection" asp-action="SortView">Sort</a>
-<a class="btn btn-primary" asp-controller="Collection" asp-action="Main">Main</a>
-<a class="btn btn-primary" asp-controller="Collection" asp-action="ItemView">ItemView</a>
-<a class="btn btn-primary" asp-controller="Collection" asp-action="CollectionView">CollectionView</a>
-<a class="btn btn-primary" asp-controller="Collection" asp-action="Test">CollectionView</a>
 
 
-<main role="main" class="container">
+<main role="main" class="container" style="padding:30px 0px 0px 0px">
 
     <div class="shadow-lg p-3 mb-5 bg-white rounded">
         <h6 class="border-bottom border-gray pb-2 mb-0">Top 3 collections by size</h6>

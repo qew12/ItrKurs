@@ -44,7 +44,8 @@ namespace ItrKurs.Migrations
                     DateCreate = table.Column<DateTimeOffset>(nullable: false),
                     Lastlogin = table.Column<DateTimeOffset>(nullable: false),
                     Status = table.Column<string>(nullable: true),
-                    IsSelected = table.Column<bool>(nullable: false)
+                    IsSelected = table.Column<bool>(nullable: false),
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

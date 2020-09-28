@@ -23,7 +23,7 @@ function CheckedID()
     });
 
 }
-
+var text;
 var str;
 function comment(idTextArea, id) {
     str = document.getElementById(idTextArea).value;
@@ -41,6 +41,30 @@ function comment(idTextArea, id) {
         }
     });
 }
+
+
+
+function search(id) {    
+    text = document.getElementById(id).value;
+    alert(text);
+    $.ajax({
+        url: '/Collection/Search',
+        type: 'POST',
+        data: { text: text },
+        success: function (result) {
+            if (result == 1) {
+                alert("32222222222");
+                window.location = '/Collection/Search/?text='+ text;
+            }
+            else {
+                alert("Error");
+            }
+        }
+        
+    });
+    alert("Error2");
+}
+
 
 function ShowField(bitM) {
     boolMask(bitM)
@@ -193,6 +217,42 @@ $("#fileBasket").on("drop", function (evt) {
         },
         complete: function () {
             $("#progress").hide();
+        }
+    });
+});
+
+$('#buttonRole').click(function () {
+    CheckedID();
+    $.ajax({
+        url: '/Users/EditRole',
+        type: 'POST',
+        data: { id: id, role: "admin" },
+        success: function (result) {
+            if (result == 1) {
+                window.location = '/Users/';
+            }
+            else {
+                alert("Error status");
+            }
+        }
+    });
+});
+
+
+
+$('#buttonUnRole').click(function () {
+    CheckedID();
+    $.ajax({
+        url: '/Users/EditRole',
+        type: 'POST',
+        data: { id: id, block: "user" },
+        success: function (result) {
+            if (result == 1) {
+                window.location = '/Users/';
+            }
+            else {
+                alert("Error status");
+            }
         }
     });
 });

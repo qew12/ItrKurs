@@ -32,7 +32,7 @@ namespace ItrKurs.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index", "Collection");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace ItrKurs.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Users");
+                        return RedirectToAction("Index", "Collection");
                     }
                 }
                 else if(result.IsLockedOut) 
@@ -90,7 +90,7 @@ namespace ItrKurs.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Collection");
         }
     }
 }

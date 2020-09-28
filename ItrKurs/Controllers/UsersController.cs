@@ -22,7 +22,14 @@ namespace ItrKurs.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Index() => View(_userManager.Users.ToList());
+        public async Task<IActionResult> Index() 
+        {
+            _currentUser = await GetCurrentUser();
+
+            User user = await _userManager.FindByIdAsync(_currentUser.Id);
+            if(user.Role!="admin") return RedirectToAction("Index", "Collection");
+            return View(_userManager.Users.ToList());
+        }
 
         public IActionResult Create() => View();
 
@@ -96,6 +103,43 @@ namespace ItrKurs.Controllers
             }
         }
 
+
+
+
+
+        public async Task<JsonResult> EditRole(string[] id, string role)
+        {
+            try
+            {
+                _currentUser = await GetCurrentUser();
+                //bool needLogout = false;
+                foreach (var idDelete in id)
+                {
+                    User user = await _userManager.FindByIdAsync(idDelete);
+
+                    if (user != null)
+                    {
+                        if (role.Equals("admin"))
+                        {
+                            user.Role = "admin";
  
+                            await _userManager.UpdateAsync(user);
+                        }
+                        else
+                        {                           
+                            user.Role = "";
+                            await _userManager.UpdateAsync(user);
+                        }
+
+                    }
+                }               
+                return new JsonResult(1);
+            }
+            catch
+            {
+                return new JsonResult(0);
+            }
+        }
+
     }
 }
